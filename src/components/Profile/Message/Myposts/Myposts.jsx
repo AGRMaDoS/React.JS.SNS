@@ -1,16 +1,24 @@
 import React from 'react';
+
 const Myposts = (props) => {
     let newPostEl = React.createRef()
 
     let addPost = () => {
-        props.addPost();
-        props.updateNewPostText('')
+        props.dispatch({type: 'ADD-POST'});
+        props.dispatch({
+            type: 'UPDATE-NEW-POST-TEXT',
+            newText: ''
+        })
     };
 
-    let onPostChange =() =>{
+    let onPostChange = () => {
         let text = newPostEl.current.value;
         console.log(text);
-        props.updateNewPostText(text)
+        let action = {
+            type: 'UPDATE-NEW-POST-TEXT',
+            newText: text
+        }
+        props.dispatch(action);
     }
 
     return (<div>
@@ -19,7 +27,7 @@ const Myposts = (props) => {
         </div>
         <div/>
         <div>
-            <textarea onChange={onPostChange} ref={newPostEl} value={props.newPostText}  />
+            <textarea onChange={onPostChange} ref={newPostEl} value={props.newPostText}/>
         </div>
         <div>
             <button onClick={addPost}>Send</button>

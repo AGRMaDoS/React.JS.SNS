@@ -12,7 +12,7 @@ const Profile = (props) => {
     return (<div className={style.content}>
         <ProfileHeader/>
         <Avatar/>
-        <Myposts addPost={props.addPost} newPostText={props.newPostText} updateNewPostText={props.updateNewPostText}/>
+        <Myposts dispatch={props.dispatch} newPostText={props.newPostText} />
         {postelements}
     </div>)
 };

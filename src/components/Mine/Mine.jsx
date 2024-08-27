@@ -10,9 +10,9 @@ const Mine = (props) => {
     return (
         <div className='app-wrapper-content'>
             <Routes>
-                <Route path="*" element={<Profile post={props.state.profilePage.post} addPost={props.addPost}
-                                                  newPostText={props.state.profilePage.newPostText}
-                                                  updateNewPostText={props.updateNewPostText}/>}/>
+                <Route path="*" element={<Profile post={props.state.profilePage.post}
+                                                  dispatch={props.dispatch}
+                                                  newPostText={props.state.profilePage.newPostText}/>}/>
                 <Route path='/dialogs' element={<Dialogs dialog={props.state.dialogsPage.dialogs}
                                                          message={props.state.dialogsPage.messages}/>}/>
                 <Route path='/news' element={<News/>}/>

@@ -10,7 +10,7 @@ const App = (props) => {
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar/>
-                <Mine state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+                <Mine state={props.state} dispatch={props.dispatch}/>
             </div>
         </BrowserRouter>);
 };

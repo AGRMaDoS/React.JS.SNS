@@ -43,33 +43,34 @@ const store = {
         },
 
     },
-    getState(){
-        debugger;
-        return this._state
-    },
     _callSubcriber() {
         console.log('State changed')
     },
-    addPost (){
+
+    getState() {
         debugger;
-        let newPost = {
-            id: 3,
-            post: this._state.profilePage.newPostText,
-            like: '',
-        }
-        this._state.profilePage.post.push(newPost);
-        this._callSubcriber(this._state, this.addPost, this.updateNewPostText)
+        return this._state
     },
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubcriber(this._state, this.addPost, this.updateNewPostText)
-    },
-    subscribe (observer) {
+    subscribe(observer) {
         this._callSubcriber = observer;
     },
 
-};
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 3,
+                post: this._state.profilePage.newPostText,
+                like: '',
+            }
+            this._state.profilePage.post.push(newPost);
+            this._callSubcriber(this._state, this.addPost, this.updateNewPostText);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubcriber(this._state, this.addPost, this.updateNewPostText)
+        }
+    },
 
+};
 
 
 window.state = store;
