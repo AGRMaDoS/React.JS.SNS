@@ -1,25 +1,19 @@
 import React from 'react';
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../Redux/Data";
 
 const Myposts = (props) => {
     let newPostEl = React.createRef()
 
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST'});
-        props.dispatch({
-            type: 'UPDATE-NEW-POST-TEXT',
-            newText: ''
-        })
+        props.dispatch(addPostActionCreator());
+        props.dispatch(updateNewPostTextActionCreator(''))
     };
 
     let onPostChange = () => {
         let text = newPostEl.current.value;
         console.log(text);
-        let action = {
-            type: 'UPDATE-NEW-POST-TEXT',
-            newText: text
-        }
-        props.dispatch(action);
-    }
+        props.dispatch(updateNewPostTextActionCreator(text));
+    };
 
     return (<div>
         <div>
