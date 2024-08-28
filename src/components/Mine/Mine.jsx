@@ -14,7 +14,9 @@ const Mine = (props) => {
                                                   dispatch={props.dispatch}
                                                   newPostText={props.state.profilePage.newPostText}/>}/>
                 <Route path='/dialogs' element={<Dialogs dialog={props.state.dialogsPage.dialogs}
-                                                         message={props.state.dialogsPage.messages}/>}/>
+                                                         message={props.state.dialogsPage.messages}
+                                                         dispatch={props.dispatch}
+                                                         newMessText={props.state.dialogsPage.newMessText}/>}/>
                 <Route path='/news' element={<News/>}/>
                 <Route path='/music' element={<Music/>}/>
                 <Route path='/settings' element={<Settings/>}/>

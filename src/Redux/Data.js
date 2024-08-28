@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESS = 'ADD-MES';
+const ON_MESSAGE_CHANGE = 'ON-MESSAGE-CHANGE'
 
 const store = {
     _state: {
@@ -20,6 +22,7 @@ const store = {
                 {id: 5, message: 'Yo'},
                 {id: 6, message: 'Yo'},
             ],
+            newMessText: '',
         },
         profilePage: {
             post: [
@@ -66,10 +69,20 @@ const store = {
                 like: '',
             }
             this._state.profilePage.post.push(newPost);
-            this._callSubcriber(this._state, this.addPost, this.updateNewPostText);
+            this._callSubcriber(this._state);
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubcriber(this._state, this.addPost, this.updateNewPostText)
+            this._state.profilePage.newPostText = action.newTextPost;
+            this._callSubcriber(this._state)
+        } else if (action.type === ADD_MESS) {
+            let newMess = {
+                id: 7,
+                message: this._state.dialogsPage.newMessText,
+            }
+            this._state.dialogsPage.messages.push(newMess);
+            this._callSubcriber(this._state)
+        } else if (action.type === ON_MESSAGE_CHANGE) {
+            this._state.dialogsPage.newMessText = action.newTextMess;
+            this._callSubcriber(this._state)
         }
     },
 };
@@ -78,7 +91,14 @@ export const addPostActionCreator = () => ({type: ADD_POST});
 
 export const updateNewPostTextActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
-    newText: text,
+    newTextPost: text,
+});
+
+export const addMessActionCreator = () => ({type: ADD_MESS});
+
+export const updateNewMessageChangeActionCreator = (text) => ({
+    type: ON_MESSAGE_CHANGE,
+    newTextMess: text,
 });
 
 
