@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESS = 'ADD-MES';
-const ON_MESSAGE_CHANGE = 'ON-MESSAGE-CHANGE'
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import friendsNavReducer from "./friendsNav-reducer";
 
 const store = {
     _state: {
@@ -62,44 +61,17 @@ const store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 3,
-                post: this._state.profilePage.newPostText,
-                like: '',
-            }
-            this._state.profilePage.post.push(newPost);
-            this._callSubcriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newTextPost;
-            this._callSubcriber(this._state)
-        } else if (action.type === ADD_MESS) {
-            let newMess = {
-                id: 7,
-                message: this._state.dialogsPage.newMessText,
-            }
-            this._state.dialogsPage.messages.push(newMess);
-            this._callSubcriber(this._state)
-        } else if (action.type === ON_MESSAGE_CHANGE) {
-            this._state.dialogsPage.newMessText = action.newTextMess;
-            this._callSubcriber(this._state)
-        }
+
+        this._state.profilePage  = profileReducer(this._state.profilePage,action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action);
+        this._state.friendsNav = friendsNavReducer(this._state.friendsNav,action);
+        this._callSubcriber(this._state)
     },
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
 
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newTextPost: text,
-});
 
-export const addMessActionCreator = () => ({type: ADD_MESS});
 
-export const updateNewMessageChangeActionCreator = (text) => ({
-    type: ON_MESSAGE_CHANGE,
-    newTextMess: text,
-});
 
 
 window.state = store;
