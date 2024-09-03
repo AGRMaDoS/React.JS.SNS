@@ -3,17 +3,13 @@ import Post from "./Message/Post/Post";
 import style from './Profile.module.css';
 import ProfileHeader from "./Header/ProfileHeader";
 import Avatar from "./Avatar/Avatar";
+import MypostsContainer from "./Message/Myposts/MypostsContainer";
 
 const Profile = (props) => {
-    const {post} = props;
-    const postelements = post.map((p) => {
-        return <Post message={p.post} like={p.like} />
-    })
     return (<div className={style.content}>
         <ProfileHeader/>
         <Avatar/>
-        <Myposts dispatch={props.dispatch} newPostText={props.newPostText} />
-        {postelements}
+        <MypostsContainer store={props.store}/>
     </div>)
 };
 

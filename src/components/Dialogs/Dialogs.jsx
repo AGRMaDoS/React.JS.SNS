@@ -1,29 +1,24 @@
 import style from './Dialogs.module.css'
+import React from "react";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import React from "react";
-import {addMessActionCreator, updateNewMessageChangeActionCreator,} from "../../Redux/dialogs-reducer";
 
 const Dialogs = (props) => {
 
-    const {dialog} = props
-    const dialogsElement = dialog.map((d) => {
+    const dialogsElement = props.dialog.map((d) => {
         return <Dialog name={d.name} id={d.id}/>
     });
-    const {message} = props
-    const messagesElement = message.map((m) => {
+    const messagesElement = props.message.map((m) => {
         return <Message message={m.message}/>
     });
 
     const onMessageChange = (e) => {
-        let text = e.target.value
-        console.log(text)
-        props.dispatch(updateNewMessageChangeActionCreator(text))
+        let text = e.target.value;
+        props.updateNewMessageText(text)
     };
 
     let addMess = () => {
-        props.dispatch(addMessActionCreator());
-        props.dispatch(updateNewMessageChangeActionCreator(''));
+       props.addMess()
     };
 
     return (<div className={style.dialogs}>
