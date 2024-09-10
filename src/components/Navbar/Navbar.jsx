@@ -1,5 +1,5 @@
 import style from "./Navbar.module.css";
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 const Navbar = () =>{
     return (
         <nav className={style.nav}>
@@ -17,6 +17,9 @@ const Navbar = () =>{
             </div>
             <div className={style.item}>
                 <Link to='settings'>Settings</Link>
+            </div>
+            <div className={style.item}>
+                <Link to='findusers'>Find Users</Link>
             </div>
             <div className={`${style.item} ${style.friendsHeader}`}>
                 <Link to='friends'>Friends</Link>

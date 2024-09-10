@@ -5,6 +5,7 @@ import Music from "../Music/Music";
 import Settings from "../Settings/Settings";
 import DialogsContainer from "../Dialogs/Message/DialogsContainer";
 import FriendsContainer from "../Friends/Friend/FriendsContainer";
+import FindUserContainer from "../Find Users/FindUserContainer";
 
 const Mine = () => {
     return (
@@ -15,6 +16,7 @@ const Mine = () => {
                 <Route path='/news' element={<News/>}/>
                 <Route path='/music' element={<Music/>}/>
                 <Route path='/settings' element={<Settings/>}/>
+                <Route path='/findusers' element={<FindUserContainer/>}/>
                 <Route path='/friends' element={<FriendsContainer />}/>
             </Routes>
         </div>
