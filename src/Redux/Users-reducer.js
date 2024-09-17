@@ -9,10 +9,10 @@ let initialtState = {
     users:[],
     pageSize:5,
     totalUsersCount:0,
-    currentPage:2,
+    currentPage:1,
 };
 
-const FindUsersReducer = (state = initialtState, action) => {
+const UsersReducer = (state = initialtState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -54,4 +54,4 @@ export const setCurrent_PageAC = (currentPage) => ({type: SET_CURRENT_PAGE, curr
 export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count:totalUsersCount});
 
 
-export default FindUsersReducer
+export default UsersReducer

@@ -3,7 +3,7 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import friendsNavReducer from "./friendsNav-reducer";
 import {configureStore} from "@reduxjs/toolkit";
-import findUsersReducer from "./findUsers-reducer";
+import findUsersReducer from "./Users-reducer";
 
 let reducers = combineReducers({
     profilePage:profileReducer,

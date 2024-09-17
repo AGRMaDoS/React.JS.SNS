@@ -5,7 +5,7 @@ import Music from "../Music/Music";
 import Settings from "../Settings/Settings";
 import DialogsContainer from "../Dialogs/Message/DialogsContainer";
 import FriendsContainer from "../Friends/Friend/FriendsContainer";
-import FindUserContainer from "../Find Users/FindUserContainer";
+import FindUserContainer from "../Find Users/UsersContainer";
 
 const Mine = () => {
     return (
