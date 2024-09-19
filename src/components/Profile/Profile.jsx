@@ -3,10 +3,11 @@ import ProfileHeader from "./Header/ProfileHeader";
 import Avatar from "./Avatar/Avatar";
 import MypostsContainer from "./Message/Myposts/MypostsContainer";
 
-const Profile = () => {
+const Profile = (props) => {
+    debugger;
     return (<div className={style.content}>
         <ProfileHeader/>
-        <Avatar/>
+        <Avatar profile={props.profile}/>
         <MypostsContainer/>
     </div>)
 };
