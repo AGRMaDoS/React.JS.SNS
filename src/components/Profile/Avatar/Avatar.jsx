@@ -8,7 +8,7 @@ const Avatar = (props) => {
     return (
         <div>
             <img className={style.avatar}
-                 src={props.profile.photos.small} alt='Avatar'/>
+                 src={props.profile.photos.large} alt='Avatar'/>
         </div>
     )
 }

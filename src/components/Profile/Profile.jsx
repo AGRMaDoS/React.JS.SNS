@@ -4,7 +4,6 @@ import Avatar from "./Avatar/Avatar";
 import MypostsContainer from "./Message/Myposts/MypostsContainer";
 
 const Profile = (props) => {
-    debugger;
     return (<div className={style.content}>
         <ProfileHeader/>
         <Avatar profile={props.profile}/>
