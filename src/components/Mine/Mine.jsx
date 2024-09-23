@@ -6,6 +6,7 @@ import DialogsContainer from "../Dialogs/Message/DialogsContainer";
 import FriendsContainer from "../Friends/Friend/FriendsContainer";
 import FindUserContainer from "../Find Users/UsersContainer";
 import ProfileContainer from "../Profile/Message/ProfileContainer";
+import Login from "../Auth/Login";
 
 const Mine = () => {
     return (
@@ -19,6 +20,7 @@ const Mine = () => {
                 <Route path='/settings' element={<Settings/>}/>
                 <Route path='/findusers' element={<FindUserContainer/>}/>
                 <Route path='/friends' element={<FriendsContainer />}/>
+                <Route path={'login'} element={<Login/>}/>
             </Routes>
         </div>
     )
