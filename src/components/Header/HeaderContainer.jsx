@@ -9,7 +9,6 @@ class HeaderContainer extends React.Component{
     componentDidMount() {
         UserAPI.authGet()
             .then((data) => {
-                debugger;
                 if(data.resultCode ===0){
                     let {id,login,email} = data.data;
                     this.props.setAuthUserData(id,email,login)
