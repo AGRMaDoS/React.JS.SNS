@@ -1,3 +1,5 @@
+import {usersAPI} from "../Api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -58,13 +60,48 @@ const UsersReducer = (state = initialtState, action) => {
     }
 };
 
-export const follow = (userId) => ({type: FOLLOW, userId});
-export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrent_Page = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching: isFetching});
 export const toggleFollowingProgress = (isFetching,userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching: isFetching,userId});
 
+export const getUsers = (currentPage,pageSize)=>{
+    return (dispatch) =>{
+    dispatch(toggleIsFetching(true));
+    usersAPI.getUserstest(currentPage,pageSize)
+        .then((data) => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        })
+}
+};
+
+export const follow = (userID)=>{
+    return (dispatch) =>{
+       dispatch(toggleFollowingProgress(true,userID))
+        usersAPI.folowPost(userID)
+            .then((data) => {
+                if(data.resultCode === 0){
+                    dispatch(followSuccess(userID))
+                }
+                dispatch(toggleFollowingProgress(false,userID))
+            });
+}};
+
+export const unfollow = (userID)=>{
+    return (dispatch) =>{
+        dispatch(toggleFollowingProgress(true,userID))
+        usersAPI.followDelete(userID)
+            .then((data) => {
+                if(data.resultCode === 0){
+                    dispatch(unfollowSuccess(userID))
+                }
+                dispatch(toggleFollowingProgress(false,userID))
+            });
+    }}
 
 export default UsersReducer
