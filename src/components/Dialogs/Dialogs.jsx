@@ -2,7 +2,6 @@ import style from './Dialogs.module.css'
 import React from "react";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-
 const Dialogs = (props) => {
 
     const dialogsElement = props.dialog.map((d) => {
@@ -20,6 +19,7 @@ const Dialogs = (props) => {
     let addMess = () => {
        props.addMess()
     };
+
 
     return (<div className={style.dialogs}>
         <div className={style.dialogs_items}>
