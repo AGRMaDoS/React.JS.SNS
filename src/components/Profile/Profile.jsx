@@ -1,12 +1,12 @@
 import style from './Profile.module.css';
 import ProfileHeader from "./Header/ProfileHeader";
-import Avatar from "./Avatar/Avatar";
+import ProfileInfo from "./Avatar/ProfileInfo";
 import MypostsContainer from "./Message/Myposts/MypostsContainer";
 
 const Profile = (props) => {
     return (<div className={style.content}>
         <ProfileHeader/>
-        <Avatar profile={props.profile}/>
+        <ProfileInfo profile={props.profile}/>
         <MypostsContainer/>
     </div>)
 };

@@ -2,7 +2,7 @@ import style from './Friend.module.css'
 const Friend = (props) => {
     return (<div>
             <p className={style.text}>
-                <img className={style.avatar} src={props.avatar} alt="Avatar"/>
+                <img className={style.avatar} src={props.avatar} alt="ProfileInfo"/>
                 {props.name}</p>
         </div>)
 };
