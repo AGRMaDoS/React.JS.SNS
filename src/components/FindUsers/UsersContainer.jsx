@@ -10,6 +10,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import {compose} from "redux";
 
 class UserContainer extends React.Component {
     componentDidMount() {
@@ -44,7 +45,7 @@ const mapStateToProps = (state) => {
     }
 };
 
-const findUsersContainer = connect(mapStateToProps,
+export default compose(connect(mapStateToProps,
     {
         follow,
         unfollow,
@@ -53,9 +54,7 @@ const findUsersContainer = connect(mapStateToProps,
         toggleIsFetching,
         toggleFollowingProgress,
         getUsers: getUsers,
-    })(UserContainer);
-
-export default findUsersContainer;
+    }))(UserContainer);
 
 
 

@@ -2,18 +2,19 @@ import Dialogs from "../Dialogs";
 import {addMessActionCreator, updateNewMessageChangeActionCreator} from "../../../Redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../../Hoc/AuthRedirect";
+import {compose} from "redux";
 
 const mapStateToProps = (state) => {
     return {
-            dialog: state.dialogsPage.dialogs,
-            message: state.dialogsPage.messages,
-            newMessText: state.dialogsPage.newMessText,
+        dialog: state.dialogsPage.dialogs,
+        message: state.dialogsPage.messages,
+        newMessText: state.dialogsPage.newMessText,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateNewMessageText : (text) => {
+        updateNewMessageText: (text) => {
             dispatch(updateNewMessageChangeActionCreator(text))
         },
         addMess: () => {
@@ -23,11 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs)
-
-const DialogsContainer = connect(mapStateToProps,mapDispatchToProps)(AuthRedirectComponent);
-
-export default DialogsContainer
+export default compose(withAuthRedirect, connect(mapStateToProps, mapDispatchToProps))(Dialogs)
 
 
 
