@@ -8,9 +8,13 @@ const ProfileInfo = (props) => {
     }
     return (
         <div>
+            <div>
+                <input type="file"  />
+            </div>
             <img className={style.avatar}
                  src={props.profile.photos.large} alt='ProfileInfo'/>
-            <ProfileStatus status={'ЙАхооо Маза-Факеры'}/>
+            <ProfileStatus status={props.status}
+            updateUserStatus={props.updateUserStatus}/>
         </div>
     )
 }
