@@ -10,6 +10,7 @@ const ProfileInfo = (props) => {
         <div>
             <div>
                 <input type="file"  />
+                <button >Загрузить</button>
             </div>
             <img className={style.avatar}
                  src={props.profile.photos.large} alt='ProfileInfo'/>
