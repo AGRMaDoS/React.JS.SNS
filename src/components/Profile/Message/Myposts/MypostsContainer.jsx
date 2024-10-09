@@ -11,13 +11,9 @@ import {connect} from "react-redux";
 
     const mapDispatchToProps = (dispatch) => {
         return {
-            addPost:()=>{
-                dispatch(addPostActionCreator());
-                dispatch(updateNewPostTextActionCreator(''))
+            addPost:(newPost)=>{
+                dispatch(addPostActionCreator(newPost));
             },
-            updateNewPostText:(text) => {
-                dispatch(updateNewPostTextActionCreator(text))
-            }
         }
     }
 

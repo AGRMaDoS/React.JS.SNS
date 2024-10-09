@@ -1,5 +1,4 @@
 const ADD_MESS = 'ADD-MES';
-const ON_MESSAGE_CHANGE = 'ON-MESSAGE-CHANGE'
 
 let initialtState = {
     dialogs: [
@@ -18,7 +17,6 @@ let initialtState = {
         {id: 5, message: 'Yo'},
         {id: 6, message: 'Yo'},
     ],
-    newMessText: '',
 }
 
 const dialogsReducer = (state = initialtState, action) => {
@@ -26,31 +24,18 @@ const dialogsReducer = (state = initialtState, action) => {
         case ADD_MESS:
             let newMess = {
                 id: 7,
-                message: state.newMessText,
+                message: action.newMessageBody,
             }
             return {
                 ...state,
                 messages:[...state.messages,newMess]
             }
-            // state.messages.push(newMess);
-            // return state;
-        case ON_MESSAGE_CHANGE:
-            return {
-                ...state,
-                newMessText: action.newTextMess
-            }
-            // state.newMessText = action.newTextMess;
-            // return state;
         default:
             return state;
     }
 };
 
-export const addMessActionCreator = () => ({type: ADD_MESS});
+export const addMessActionCreator = (newMessageBody) => ({type: ADD_MESS,newMessageBody});
 
-export const updateNewMessageChangeActionCreator = (text) => ({
-    type: ON_MESSAGE_CHANGE,
-    newTextMess: text,
-});
 
 export default dialogsReducer;

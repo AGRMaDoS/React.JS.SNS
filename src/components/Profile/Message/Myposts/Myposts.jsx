@@ -1,5 +1,7 @@
 import React from 'react';
 import Post from "../Post/Post";
+import NewPostFormRedux from "../../../Common/FormToProject/NewPostForm/NewPostForm";
+
 
 const Myposts = (props) => {
 
@@ -7,16 +9,9 @@ const Myposts = (props) => {
         return <Post message={p.post} like={p.like} />
     })
 
-    let newPostEl = React.createRef()
-
-    let addPost = () => {
-        props.addPost();
-    };
-
-    let onPostChange = () => {
-        let text = newPostEl.current.value;
-        props.updateNewPostText(text);
-
+    let addPost = (values) => {
+        debugger;
+        props.addPost(values.newPost);
     };
 
     return (<div>
@@ -24,12 +19,7 @@ const Myposts = (props) => {
             <p>My posts</p>
         </div>
         <div/>
-        <div>
-            <textarea onChange={onPostChange} ref={newPostEl} value={props.newPostText}/>
-        </div>
-        <div>
-            <button onClick={addPost}>Send</button>
-        </div>
+        < NewPostFormRedux onSubmit={addPost}/>
         <div>
             {postelements}
         </div>
