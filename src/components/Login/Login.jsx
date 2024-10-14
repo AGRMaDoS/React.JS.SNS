@@ -1,4 +1,4 @@
-import LoginReduxForm from "../Common/FormToProject/LoginForm";
+import LoginReduxForm from "../Common/LoginForm/LoginForm";
 
 
 const Login = (props) => {

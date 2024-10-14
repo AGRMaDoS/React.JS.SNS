@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from "../Post/Post";
-import NewPostFormRedux from "../../../Common/FormToProject/NewPostForm/NewPostForm";
+import NewPostFormRedux from "../../../Common/NewPostForm/NewPostForm";
 
 
 const Myposts = (props) => {
@@ -10,7 +10,6 @@ const Myposts = (props) => {
     })
 
     let addPost = (values) => {
-        debugger;
         props.addPost(values.newPost);
     };
 

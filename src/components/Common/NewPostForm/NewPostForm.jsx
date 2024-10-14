@@ -1,11 +1,13 @@
 import {Field, reduxForm} from "redux-form";
 import React from "react";
+import {Textarea} from "../FormsControls/FormsControls";
 
 let NewPostForm = (props) => {
     return (
                 <form onSubmit={props.handleSubmit}>
                     <div>
-                        <Field component={"textarea"} name={"newPost"}/>
+                        <Field name={"newPost"} component={Textarea} placeholder={"Post message"}
+                               validate={[]}   />
                     </div>
                     <div>
                         <button>Send</button>
