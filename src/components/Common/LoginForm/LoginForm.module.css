@@ -8,3 +8,10 @@
 {
     color: red;
 }
+.formControl_Summary_Error{
+    border:solid red 2px ;
+    padding: 5px;
+    color: red;
+    width: 162px;
+    background-color: black;
+}
