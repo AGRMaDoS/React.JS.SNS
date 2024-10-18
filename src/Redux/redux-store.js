@@ -7,6 +7,7 @@ import findUsersReducer from "./Users-reducer";
 import headerReducer from "./Header-reducer";
 import {thunk  as thunkMiddleware} from "redux-thunk";
 import {reducer as formReducer} from "redux-form"
+import AppReducer from "./App-reducer";
 
 let reducers = combineReducers({
     profilePage:profileReducer,
@@ -14,7 +15,8 @@ let reducers = combineReducers({
     friendsNav:friendsNavReducer,
     findUsersPage:findUsersReducer,
     auth:headerReducer,
-    form:formReducer
+    form:formReducer,
+    app:AppReducer,
     });
 
 let store = configureStore({reducer:reducers},applyMiddleware(thunkMiddleware));

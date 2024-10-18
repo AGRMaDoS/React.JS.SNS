@@ -1,6 +1,7 @@
 import style from "./Avatar.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import userPhoto from "../../../assets/images/user.png"
 
 const ProfileInfo = (props) => {
     if(!props.profile){
@@ -13,7 +14,7 @@ const ProfileInfo = (props) => {
                 <button >Загрузить</button>
             </div>
             <img className={style.avatar}
-                 src={props.profile.photos.large} alt='ProfileInfo'/>
+                 src={props.profile.photos.large ||userPhoto} alt='ProfileInfo'/>
             <ProfileStatus status={props.status}
             updateUserStatus={props.updateUserStatus}/>
         </div>

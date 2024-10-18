@@ -7,7 +7,6 @@ import React from "react";
 
 const Login = (props) => {
     const onSubmit=(formData)=>{
-        console.log(props)
         props.login(formData.email,formData.password,formData.rememberMe)
     }
 

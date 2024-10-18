@@ -37,7 +37,9 @@ export const profileAPI = {
     updateStatus(status){
         return instance.put(`profile/status`,{status:status});
     },
-
+    loadingPhoto(image){
+        return instance.put("profile/photo", {large:image})
+    }
 };
 
 export const authAPI= {
