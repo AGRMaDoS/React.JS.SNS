@@ -1,22 +1,22 @@
 import style from "./Avatar.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import userPhoto from "../../../assets/images/user.png"
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
-    if(!props.profile){
+    if (!props.profile) {
         return <Preloader/>
     }
     return (
         <div>
             <div>
-                <input type="file"  />
-                <button >Загрузить</button>
+                <input type="file"/>
+                <button>Загрузить</button>
             </div>
             <img className={style.avatar}
-                 src={props.profile.photos.large ||userPhoto} alt='ProfileInfo'/>
-            <ProfileStatus status={props.status}
-            updateUserStatus={props.updateUserStatus}/>
+                 src={props.profile.photos.large || userPhoto} alt='ProfileInfo'/>
+            <ProfileStatusWithHooks status={props.status}
+                                    updateUserStatus={props.updateUserStatus}/>
         </div>
     )
 }
