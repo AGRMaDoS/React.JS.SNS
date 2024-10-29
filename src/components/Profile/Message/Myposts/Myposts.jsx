@@ -3,10 +3,10 @@ import Post from "../Post/Post";
 import NewPostFormRedux from "../../../Common/NewPostForm/NewPostForm";
 
 
-const Myposts = (props) => {
+function Myposts(props) {
 
     const postelements = props.post.map((p) => {
-        return <Post message={p.post} like={p.like} />
+        return <Post message={p.post} like={p.like}/>
     })
 
     let addPost = (values) => {
