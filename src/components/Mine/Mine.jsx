@@ -6,7 +6,7 @@ import DialogsContainer from "../Dialogs/Message/DialogsContainer";
 import FindUserContainer from "../FindUsers/UsersContainer";
 import ProfileContainer from "../Profile/Message/ProfileContainer";
 import Login from "../Login/Login";
-import FriendsContainerTest from "../Friends/Friend/FriendsContainerTest";
+import FriendsContainerTest from "../Friends/Friend/FriendsContainer";
 
 const Mine = () => {
     return (

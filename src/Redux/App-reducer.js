@@ -1,4 +1,4 @@
-import {authGet} from "./Header-reducer";
+import {authGet} from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 

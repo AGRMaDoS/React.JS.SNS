@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
-import FriendTest from "./FriendTest";
+import Friend from "./Friend";
 import {usersAPI} from "../../../Api/api";
 
-const FriendsTest = (props) => {
-    debugger;
+const Friends = (props) => {
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        debugger
         const fetchData = async () => {
             const response = await usersAPI.getUsers1(1, 100)
             setData(response.items);
@@ -23,7 +21,7 @@ const FriendsTest = (props) => {
     if (!props.isAuth) return <Navigate to="/login"/>;
     const friendElements = data
         .filter((u) => u.followed)
-        .map((u) => <FriendTest user={u}/>);
+        .map((u) => <Friend user={u}/>);
     return (
         <div>
             <div>Your Friends</div>
@@ -32,4 +30,4 @@ const FriendsTest = (props) => {
     )
 };
 
-export default FriendsTest;
+export default Friends;

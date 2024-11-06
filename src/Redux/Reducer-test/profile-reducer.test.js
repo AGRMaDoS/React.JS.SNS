@@ -27,7 +27,7 @@ test('message of new posts should be correct', () => {
 });
 test('after deleting length of messages should be decrement', () => {
     // 1. test data
-    let action = deletePost(5)
+    let action = deletePost(2)
     // 2. action
     let newState = profileReducer(state, action);
 
