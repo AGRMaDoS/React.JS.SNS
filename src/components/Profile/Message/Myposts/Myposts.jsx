@@ -6,7 +6,7 @@ import NewPostFormRedux from "../../../Common/NewPostForm/NewPostForm";
 function Myposts(props) {
 
     const postelements = props.post.map((p) => {
-        return <Post message={p.post} like={p.like}/>
+        return <Post key={p.id} message={p.post} like={p.like}/>
     })
 
     let addPost = (values) => {

@@ -15,8 +15,6 @@ const Friends = (props) => {
         fetchData();
     }, []);
 
-    console.log(data)
-
 
     if (!props.isAuth) return <Navigate to="/login"/>;
     const friendElements = data

@@ -1,15 +1,21 @@
 import React from 'react';
 import Profile from "../Profile";
 import {connect} from "react-redux";
-import {getProfile, getUserStatus, updateUserStatus} from "../../../Redux/profile-reducer";
+import {
+    getProfile,
+    getUserStatus,
+    savePhoto,
+    saveProfile,
+    setEditMode,
+    updateUserStatus
+} from "../../../Redux/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../../Hoc/AuthRedirect";
 import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
-
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = this.props.authID;
@@ -19,9 +25,20 @@ class ProfileContainer extends React.Component {
         this.props.getUserStatus(userId)
     }
 
+    componentDidMount() {
+        this.refreshProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.router.params.userId != prevProps.router.params.userId) {
+            this.refreshProfile()
+        }
+    }
+
     render() {
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} isOwner={!this.props.router.params.userId}
+                     savePhoto={this.props.savePhoto} saveProfile={this.props.saveProfile}/>
         )
     }
 }
@@ -29,7 +46,9 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    authID: state.auth.id
+    authID: state.auth.id,
+    editMode: state.profilePage.editMode
+    // statusApi: state.profilePage.statusApi
 })
 
 
@@ -49,5 +68,12 @@ export function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-export default compose(connect(mapStateToProps, {getProfile, getUserStatus, updateUserStatus}), withRouter,
+export default compose(connect(mapStateToProps, {
+        getProfile,
+        getUserStatus,
+        updateUserStatus,
+        savePhoto,
+        saveProfile,
+        setEditMode
+    }), withRouter,
     withAuthRedirect)(ProfileContainer)

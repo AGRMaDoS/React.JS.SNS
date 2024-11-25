@@ -49,7 +49,6 @@ const store = {
 
     },
     _callSubcriber() {
-        console.log('State changed')
     },
 
     getState() {
@@ -62,16 +61,12 @@ const store = {
 
     dispatch(action) {
 
-        this._state.profilePage  = profileReducer(this._state.profilePage,action);
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action);
-        this._state.friendsNav = friendsNavReducer(this._state.friendsNav,action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.friendsNav = friendsNavReducer(this._state.friendsNav, action);
         this._callSubcriber(this._state)
     },
 };
-
-
-
-
 
 
 window.state = store;
