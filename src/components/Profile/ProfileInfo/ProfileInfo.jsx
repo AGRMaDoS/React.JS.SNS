@@ -39,7 +39,6 @@ const ProfileInfo = (props) => {
                 <ProfileDataFormRedux initialValues={props.profile} profile={props.profile} onSubmit={onSubmit}/> :
                 <ProfileData goToEditmode={() => {
                     props.setEditMode(true)
-                    // setEditMode(true)
                 }}
                              profile={props.profile} isOwner={props.isOwner}/>}
         </div>

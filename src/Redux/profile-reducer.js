@@ -103,7 +103,6 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
                 contacts: {[wrongNetwork]: response.data.messages[0]}
             })
         );
-        // return Promise.reject(response.data.messages[0]);
     }
 };
 

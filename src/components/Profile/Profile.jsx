@@ -10,8 +10,7 @@ const Profile = (props) => {
         <ProfileInfo profile={props.profile} status={props.status}
                      updateUserStatus={props.updateUserStatus} isOwner={props.isOwner}
                      savePhoto={props.savePhoto} saveProfile={props.saveProfile}
-                     statusApi={props.statusApi} setEditMode={props.setEditMode}
-                     editMode={props.editMode}/>
+                     setEditMode={props.setEditMode} editMode={props.editMode}/>
         <MypostsContainer/>
     </div>)
 };

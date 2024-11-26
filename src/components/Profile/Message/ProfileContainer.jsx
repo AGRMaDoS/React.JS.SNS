@@ -48,7 +48,6 @@ const mapStateToProps = (state) => ({
     status: state.profilePage.status,
     authID: state.auth.id,
     editMode: state.profilePage.editMode
-    // statusApi: state.profilePage.statusApi
 })
 
 
