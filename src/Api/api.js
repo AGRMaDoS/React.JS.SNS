@@ -34,13 +34,13 @@ export const usersAPI = {
             .then(response => response.data);
     },
 
-    getProfile(userId) {
-        return instance.get(`profile/` + userId);
+    async getProfile(userId) {
+        return await instance.get(`profile/` + userId);
     },
 };
 export const profileAPI = {
-    getStatus(userId) {
-        return instance.get(`profile/status/` + userId);
+    async getStatus(userId) {
+        return await instance.get(`profile/status/` + userId);
     },
     updateStatus(status) {
         return instance.put(`profile/status`, {status: status});
@@ -73,8 +73,7 @@ export const authAPI = {
 }
 export const securityAPI = {
     async getCaptchaUrl() {
-        const resp = await instance.get(`security/get-captcha-url`)
-        return resp
+        return await instance.get(`security/get-captcha-url`)
     },
 }
 

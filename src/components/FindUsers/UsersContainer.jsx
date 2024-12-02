@@ -54,7 +54,7 @@ export default compose(connect(mapStateToProps,
         setTotalUsersCount,
         toggleIsFetching,
         toggleFollowingProgress,
-        getUsers: getUsers,
+        getUsers,
     }))(UserContainer);
 
 

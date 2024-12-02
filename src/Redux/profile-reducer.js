@@ -7,6 +7,7 @@ const SET_STATUS = 'profile-reducer/SET_STATUS';
 const DELETE_POST = 'profile-reducer/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'profile-reducer/SAVE_PHOTO';
 const SET_EDIT_MODE = 'profile-reducer/SET_EDIT_MODE';
+const SET_SERVER_ERROR = 'profile-reducer/SET_SERVER_ERROR';
 
 
 let initialtState = {
@@ -14,6 +15,7 @@ let initialtState = {
     profile: null,
     status: "",
     editMode: false,
+    serverError: null
 
 }
 
@@ -47,6 +49,10 @@ const profileReducer = (state = initialtState, action) => {
             return {
                 ...state, editMode: action.editMode,
             }
+        case SET_SERVER_ERROR:
+            return {
+                ...state, serverError: action.serverError,
+            }
         default:
             return state;
     }
@@ -58,12 +64,19 @@ export const getStatusProfile = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const setEditMode = (editMode) => ({type: SET_EDIT_MODE, editMode})
+export const setServerError = (serverError) => ({type: SET_SERVER_ERROR, serverError})
 
 
 export const getProfile = (userID) => async (dispatch) => {
-    let response = await usersAPI.getProfile(userID)
-    // console.log(response)
-    dispatch(setUserProfile(response.data));
+    try {
+        let response = await usersAPI.getProfile(userID)
+        dispatch(setUserProfile(response.data));
+    } catch (error) {
+        console.log(error.status)
+        if (error.status === 400 || error.status === 500) {
+            dispatch(setServerError(error.message));
+        }
+    }
 };
 
 export const getUserStatus = (userID) => async (dispatch) => {

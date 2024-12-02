@@ -1,0 +1,1 @@
+export const serverError = (state) => state.profilePage.serverError;

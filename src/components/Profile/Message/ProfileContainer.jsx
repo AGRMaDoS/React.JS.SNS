@@ -12,13 +12,15 @@ import {
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../../Hoc/AuthRedirect";
 import {compose} from "redux";
+import NotFound404 from "../../NotFound404/NotFound404";
 
 
 class ProfileContainer extends React.Component {
     refreshProfile() {
         let userId = this.props.router.params.userId;
-        if (!userId) {
+        if (!userId || !Number(userId)) {
             userId = this.props.authID;
+            // console.log(userId)
         }
 
         this.props.getProfile(userId);
@@ -36,10 +38,20 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        return (
-            <Profile {...this.props} isOwner={!this.props.router.params.userId}
-                     savePhoto={this.props.savePhoto} saveProfile={this.props.saveProfile}/>
-        )
+        if (!Number(!this.props.router.params.userId) && !Number(this.props.router.params.userId)) {
+            return (
+                <NotFound404/>
+            )
+        } else if (this.props.authID || !this.props.router.params.userId) {
+            return (
+                <Profile {...this.props} isOwner={!this.props.router.params.userId}
+                         savePhoto={this.props.savePhoto} saveProfile={this.props.saveProfile}/>
+            )
+        } else if (this.props.serverError) {
+            return (
+                <NotFound404/>
+            )
+        }
     }
 }
 
@@ -47,7 +59,8 @@ const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authID: state.auth.id,
-    editMode: state.profilePage.editMode
+    editMode: state.profilePage.editMode,
+    serverError: state.profilePage.serverError
 })
 
 
