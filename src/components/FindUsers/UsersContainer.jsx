@@ -22,7 +22,9 @@ class UserContainer extends React.Component {
         this.props.setCurrent_Page(pageNumber);
         this.props.toggleIsFetching(true);
         this.props.getUsers(pageNumber, this.props.pageSize);
+        console.log(pageNumber)
     };
+
 
     render() {
         return <>

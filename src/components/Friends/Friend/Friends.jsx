@@ -2,6 +2,10 @@ import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import Friend from "./Friend";
 import {usersAPI} from "../../../Api/api";
+import Paginator from "../../Common/Paginator/Paginator";
+import {useSelector} from "react-redux";
+import {currentPageSelector, pageSizeSelector, totalItemsCountSelector} from "../../../Redux/selectors/Selectors";
+import {getUsers, setCurrent_Page, toggleIsFetching} from "../../../Redux/Users-reducer";
 
 const Friends = (props) => {
 
@@ -15,6 +19,16 @@ const Friends = (props) => {
         fetchData();
     }, []);
 
+    const currentPage = useSelector(currentPageSelector);
+    const totalUsersCount = useSelector(totalItemsCountSelector);
+    const pageSize = useSelector(pageSizeSelector);
+
+    const onPageChanged = (pageNumber) => {
+        setCurrent_Page(pageNumber);
+        toggleIsFetching(true);
+        getUsers(pageNumber, pageSize);
+    };
+
 
     if (!props.isAuth) return <Navigate to="/login"/>;
     const friendElements = data
@@ -23,6 +37,8 @@ const Friends = (props) => {
     return (
         <div>
             <div>Your Friends</div>
+            <Paginator currentPage={currentPage} totaItemsCount={totalUsersCount}
+                       pageSize={pageSize} onPageChanged={onPageChanged}/>
             <div>{friendElements}</div>
         </div>
     )
